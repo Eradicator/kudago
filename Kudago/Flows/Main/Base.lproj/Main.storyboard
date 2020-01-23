@@ -87,16 +87,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ss-wz-T9j">
-                                        <rect key="frame" x="0.0" y="136.5" width="414" height="387"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZfU-ds-SQd">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-7A-B8j">
                                         <rect key="frame" x="10" y="71" width="394" height="25"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,6 +100,21 @@
                                             <outlet property="delegate" destination="iRg-rJ-1Uq" id="Riu-uI-pQd"/>
                                         </connections>
                                     </textView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ss-wz-T9j">
+                                        <rect key="frame" x="0.0" y="136.5" width="414" height="387"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZfU-ds-SQd">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="iRg-rJ-1Uq" id="gfO-X1-pZn"/>
+                                            <outlet property="delegate" destination="iRg-rJ-1Uq" id="McO-2H-cPZ"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bd5-7A-B8j" firstAttribute="top" secondItem="Sd0-CE-5jU" secondAttribute="bottom" constant="10" id="29X-eH-7Ex"/>
@@ -145,6 +150,7 @@
                     <connections>
                         <outlet property="bodyTextView" destination="bd5-7A-B8j" id="JCR-9q-OHi"/>
                         <outlet property="bodyTextViewHeightConstraint" destination="ym1-2c-Ve3" id="stI-xU-dPM"/>
+                        <outlet property="collectionView" destination="0ss-wz-T9j" id="Htz-yk-iD0"/>
                         <outlet property="placeLabel" destination="Wsp-gC-52I" id="XPc-ah-bRc"/>
                         <outlet property="priceLabel" destination="DlA-LQ-5rX" id="Eds-Wq-mdE"/>
                         <outlet property="tagsLabel" destination="Sd0-CE-5jU" id="1hv-P1-MAe"/>

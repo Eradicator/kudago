@@ -23,7 +23,7 @@ final class EventCell: UITableViewCell {
             }
             
             if let imageLocation = viewModel.imageLocation {
-                setImage(imageLocation)
+                theImageView.setImage(with: imageLocation)
             }
             titleLabel.text = viewModel.title
             
@@ -41,22 +41,5 @@ final class EventCell: UITableViewCell {
         titleLabel.text = ""
         descriptionLabel.text = ""
         viewModel = nil
-    }
-    
-    private func setImage(_ URLString: String) {
-        guard let url = URL(string: URLString) else {
-            return
-        }
-        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-        URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-            guard error == nil,
-                let data = data,
-                let image = UIImage(data: data) else {
-                return
-            }
-            DispatchQueue.main.async {
-                self?.theImageView.image = image
-            }
-        }.resume()
     }
 }

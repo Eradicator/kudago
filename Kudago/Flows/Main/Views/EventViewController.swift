@@ -17,6 +17,8 @@ final class EventViewController: UIViewController {
     @IBOutlet private weak var bodyTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var priceLabel: UILabel!
     
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +27,8 @@ final class EventViewController: UIViewController {
         tagsLabel.text = viewModel.tags
         priceLabel.text = viewModel.price
         bodyTextView.attributedText = viewModel.bodyText
+        
+        collectionView.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
     }
     
     override func viewWillLayoutSubviews() {
@@ -60,5 +64,24 @@ extension EventViewController: UITextViewDelegate {
             UIApplication.shared.open(URL, options: [:], completionHandler: nil)
         }
         return false
+    }
+}
+
+extension EventViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell else {
+            print("❗️ERROR: Cell not found")
+            return UICollectionViewCell()
+        }
+        cell.setImage(with: viewModel.images[indexPath.item])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
     }
 }

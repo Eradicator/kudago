@@ -57,4 +57,11 @@ final class EventDetailViewModel {
         }
         return NSAttributedString()
     }
+    
+    var images: [String] {
+        guard let images = model.images else {
+            return []
+        }
+        return images.compactMap { $0.image }
+    }
 }

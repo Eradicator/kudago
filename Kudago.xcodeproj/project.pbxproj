@@ -15,8 +15,11 @@
 		CE3DE2FE23D5B85C000ADDDD /* Quicktype.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */; };
 		CE3DE30323D5BB26000ADDDD /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */; };
 		CE3DE30523D5BB38000ADDDD /* DateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */; };
-		CE3DE30823D5C101000ADDDD /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE30623D5C101000ADDDD /* DateCell.swift */; };
-		CE3DE30923D5C101000ADDDD /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE30723D5C101000ADDDD /* DateCell.xib */; };
+		CE88CC8E23D9E8C300839B2E /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88CC8C23D9E8C300839B2E /* ImageCell.swift */; };
+		CE88CC8F23D9E8C300839B2E /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88CC8D23D9E8C300839B2E /* ImageCell.xib */; };
+		CE88CC9323D9EA3800839B2E /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88CC9223D9EA3800839B2E /* UIImageViewExtension.swift */; };
+		CE88CC9623D9EA7000839B2E /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88CC9423D9EA7000839B2E /* DateCell.swift */; };
+		CE88CC9723D9EA7000839B2E /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88CC9523D9EA7000839B2E /* DateCell.xib */; };
 		CEFAAFF223D83EC900572403 /* PickerResponderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF123D83EC900572403 /* PickerResponderView.swift */; };
 		CEFAAFF423D8725700572403 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF323D8725700572403 /* MainViewModel.swift */; };
 		CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF923D874F700572403 /* EventCell.swift */; };
@@ -39,8 +42,11 @@
 		CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quicktype.swift; sourceTree = "<group>"; };
 		CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
 		CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionView.xib; sourceTree = "<group>"; };
-		CE3DE30623D5C101000ADDDD /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = ../Views/DateCell.swift; sourceTree = "<group>"; };
-		CE3DE30723D5C101000ADDDD /* DateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DateCell.xib; path = ../Views/DateCell.xib; sourceTree = "<group>"; };
+		CE88CC8C23D9E8C300839B2E /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		CE88CC8D23D9E8C300839B2E /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		CE88CC9223D9EA3800839B2E /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		CE88CC9423D9EA7000839B2E /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		CE88CC9523D9EA7000839B2E /* DateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
 		CEFAAFF123D83EC900572403 /* PickerResponderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerResponderView.swift; path = ../Views/PickerResponderView.swift; sourceTree = "<group>"; };
 		CEFAAFF323D8725700572403 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CEFAAFF923D874F700572403 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 		CE3DE2E923D5B82A000ADDDD /* Kudago */ = {
 			isa = PBXGroup;
 			children = (
+				CE88CC9123D9EA2000839B2E /* CommonExtensions */,
 				CE3DE2FF23D5B975000ADDDD /* Flows */,
 				CE3DE2FC23D5B844000ADDDD /* Model */,
 				CE3DE2EA23D5B82A000ADDDD /* AppDelegate.swift */,
@@ -135,13 +142,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CE88CC9123D9EA2000839B2E /* CommonExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE88CC9223D9EA3800839B2E /* UIImageViewExtension.swift */,
+			);
+			path = CommonExtensions;
+			sourceTree = "<group>";
+		};
 		CEFAAFF723D874A500572403 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE3DE30623D5C101000ADDDD /* DateCell.swift */,
-				CE3DE30723D5C101000ADDDD /* DateCell.xib */,
 				CEFAAFF923D874F700572403 /* EventCell.swift */,
 				CEFAAFFA23D874F700572403 /* EventCell.xib */,
+				CE88CC8C23D9E8C300839B2E /* ImageCell.swift */,
+				CE88CC8D23D9E8C300839B2E /* ImageCell.xib */,
+				CE88CC9423D9EA7000839B2E /* DateCell.swift */,
+				CE88CC9523D9EA7000839B2E /* DateCell.xib */,
 			);
 			name = Cells;
 			path = ../Cells;
@@ -214,12 +231,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE88CC9723D9EA7000839B2E /* DateCell.xib in Resources */,
 				CE3DE2F523D5B82E000ADDDD /* LaunchScreen.storyboard in Resources */,
 				CE3DE30523D5BB38000ADDDD /* DateSelectionView.xib in Resources */,
+				CE88CC8F23D9E8C300839B2E /* ImageCell.xib in Resources */,
 				CE3DE2F223D5B82E000ADDDD /* Assets.xcassets in Resources */,
 				CE3DE2F023D5B82A000ADDDD /* Main.storyboard in Resources */,
 				CEFAAFFC23D874F700572403 /* EventCell.xib in Resources */,
-				CE3DE30923D5C101000ADDDD /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,11 +249,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFAAFF423D8725700572403 /* MainViewModel.swift in Sources */,
+				CE88CC9623D9EA7000839B2E /* DateCell.swift in Sources */,
 				CEFAB00223D9C2F700572403 /* EventViewController.swift in Sources */,
 				CEFAB00423D9C46A00572403 /* EventDetailViewModel.swift in Sources */,
 				CE3DE2ED23D5B82A000ADDDD /* MainViewController.swift in Sources */,
 				CEFAAFF223D83EC900572403 /* PickerResponderView.swift in Sources */,
-				CE3DE30823D5C101000ADDDD /* DateCell.swift in Sources */,
+				CE88CC9323D9EA3800839B2E /* UIImageViewExtension.swift in Sources */,
+				CE88CC8E23D9E8C300839B2E /* ImageCell.swift in Sources */,
 				CEFAAFFE23D98B4A00572403 /* EventCellViewModel.swift in Sources */,
 				CEFAB00623D9C95A00572403 /* QuicktypeDetail.swift in Sources */,
 				CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */,

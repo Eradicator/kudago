@@ -13,11 +13,15 @@ final class MainViewController: UIViewController {
             self?.tableView.contentOffset.y = 0
             self?.tableView.reloadData()
         }, onErrorHappened: { [weak self] (error, info) in
-            let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(ok)
-            self?.present(alert, animated: true)
+            self?.errorHappened(error: error, info: info)
     })
+    
+    private func errorHappened(error: Error?, info: String) {
+        let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
     
     @IBOutlet private weak var dateSelectionContainerView: UIView!
     @IBOutlet private weak var tableView: UITableView!
@@ -44,11 +48,18 @@ final class MainViewController: UIViewController {
         super.viewWillLayoutSubviews()
         dateSelectionView?.frame = dateSelectionContainerView.bounds
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EventViewController,
+            let viewModel = sender as? EventDetailViewModel {
+            vc.viewModel = viewModel
+        }
+    }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.events.count// + 1
+        return viewModel.events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,7 +77,6 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         viewModel.beginFetchEvents { [weak tableView] startIndex, endIndex in
-            let foo = (startIndex ..< endIndex)
             let indexPaths = (startIndex ..< endIndex).map { return IndexPath(row: $0, section: 0) }
             tableView?.insertRows(at: indexPaths, with: .none)
         }
@@ -74,5 +84,11 @@ extension MainViewController: UITableViewDataSourcePrefetching {
 }
 
 extension MainViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.events[indexPath.row].createDetailViewModel(success: {[weak self] (detailViewModel) in
+            self?.performSegue(withIdentifier: "ShowDetailEvent", sender: detailViewModel)
+    }, failure: { [weak self] error, info in
+        self?.errorHappened(error: error, info: info)
+    })
+    }
 }

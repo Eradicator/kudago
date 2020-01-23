@@ -22,6 +22,10 @@
 		CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF923D874F700572403 /* EventCell.swift */; };
 		CEFAAFFC23D874F700572403 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFAAFFA23D874F700572403 /* EventCell.xib */; };
 		CEFAAFFE23D98B4A00572403 /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */; };
+		CEFAB00023D9C25500572403 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFFF23D9C25500572403 /* NavigationController.swift */; };
+		CEFAB00223D9C2F700572403 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAB00123D9C2F700572403 /* EventViewController.swift */; };
+		CEFAB00423D9C46A00572403 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAB00323D9C46A00572403 /* EventDetailViewModel.swift */; };
+		CEFAB00623D9C95A00572403 /* QuicktypeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAB00523D9C95A00572403 /* QuicktypeDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		CEFAAFF923D874F700572403 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		CEFAAFFA23D874F700572403 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
+		CEFAAFFF23D9C25500572403 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CEFAB00123D9C2F700572403 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		CEFAB00323D9C46A00572403 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		CEFAB00523D9C95A00572403 /* QuicktypeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuicktypeDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */,
+				CEFAB00523D9C95A00572403 /* QuicktypeDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				CE3DE30123D5BB01000ADDDD /* Views */,
+				CEFAB00323D9C46A00572403 /* EventDetailViewModel.swift */,
 				CEFAAFF323D8725700572403 /* MainViewModel.swift */,
 				CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */,
 				CE3DE2EE23D5B82A000ADDDD /* Main.storyboard */,
@@ -114,7 +124,9 @@
 		CE3DE30123D5BB01000ADDDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEFAB00123D9C2F700572403 /* EventViewController.swift */,
 				CE3DE2EC23D5B82A000ADDDD /* MainViewController.swift */,
+				CEFAAFFF23D9C25500572403 /* NavigationController.swift */,
 				CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */,
 				CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */,
 				CEFAAFF823D874A600572403 /* Helpers */,
@@ -219,12 +231,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFAAFF423D8725700572403 /* MainViewModel.swift in Sources */,
+				CEFAB00223D9C2F700572403 /* EventViewController.swift in Sources */,
+				CEFAB00423D9C46A00572403 /* EventDetailViewModel.swift in Sources */,
 				CE3DE2ED23D5B82A000ADDDD /* MainViewController.swift in Sources */,
 				CEFAAFF223D83EC900572403 /* PickerResponderView.swift in Sources */,
 				CE3DE30823D5C101000ADDDD /* DateCell.swift in Sources */,
 				CEFAAFFE23D98B4A00572403 /* EventCellViewModel.swift in Sources */,
+				CEFAB00623D9C95A00572403 /* QuicktypeDetail.swift in Sources */,
 				CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */,
 				CE3DE30323D5BB26000ADDDD /* DateSelectionView.swift in Sources */,
+				CEFAB00023D9C25500572403 /* NavigationController.swift in Sources */,
 				CE3DE2EB23D5B82A000ADDDD /* AppDelegate.swift in Sources */,
 				CE3DE2FE23D5B85C000ADDDD /* Quicktype.swift in Sources */,
 			);

@@ -72,7 +72,7 @@ final class MainViewModel {
         }
         
         fetchInProgress = true
-        task = URLSession.shared.eventsTask(with: url) { [weak self] (events, response, error) in
+        task = URLSession.shared.eventsTask(with: url) { [weak self] (events, _, error) in
             DispatchQueue.main.async {
                 self?.fetchInProgress = false
             }
@@ -81,7 +81,7 @@ final class MainViewModel {
             }
             guard error == nil else {
                 DispatchQueue.main.async {
-                    self?.onErrorHappened(error, "Fetch error, check network connection")
+                    self?.onErrorHappened(error, "Fetching failed, check network connection")
                 }
                 return
             }

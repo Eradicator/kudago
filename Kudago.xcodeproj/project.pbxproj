@@ -8,20 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		CE3DE2EB23D5B82A000ADDDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE2EA23D5B82A000ADDDD /* AppDelegate.swift */; };
-		CE3DE2ED23D5B82A000ADDDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE2EC23D5B82A000ADDDD /* ViewController.swift */; };
+		CE3DE2ED23D5B82A000ADDDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE2EC23D5B82A000ADDDD /* MainViewController.swift */; };
 		CE3DE2F023D5B82A000ADDDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE2EE23D5B82A000ADDDD /* Main.storyboard */; };
 		CE3DE2F223D5B82E000ADDDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE2F123D5B82E000ADDDD /* Assets.xcassets */; };
 		CE3DE2F523D5B82E000ADDDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE2F323D5B82E000ADDDD /* LaunchScreen.storyboard */; };
+		CE3DE2FE23D5B85C000ADDDD /* Quicktype.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */; };
+		CE3DE30323D5BB26000ADDDD /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */; };
+		CE3DE30523D5BB38000ADDDD /* DateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */; };
+		CE3DE30823D5C101000ADDDD /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DE30623D5C101000ADDDD /* DateCell.swift */; };
+		CE3DE30923D5C101000ADDDD /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3DE30723D5C101000ADDDD /* DateCell.xib */; };
+		CEFAAFF223D83EC900572403 /* PickerResponderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF123D83EC900572403 /* PickerResponderView.swift */; };
+		CEFAAFF423D8725700572403 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF323D8725700572403 /* MainViewModel.swift */; };
+		CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFF923D874F700572403 /* EventCell.swift */; };
+		CEFAAFFC23D874F700572403 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFAAFFA23D874F700572403 /* EventCell.xib */; };
+		CEFAAFFE23D98B4A00572403 /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE3DE2E723D5B82A000ADDDD /* Kudago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kudago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3DE2EA23D5B82A000ADDDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE3DE2EC23D5B82A000ADDDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE3DE2EC23D5B82A000ADDDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		CE3DE2EF23D5B82A000ADDDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE3DE2F123D5B82E000ADDDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3DE2F423D5B82E000ADDDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3DE2F623D5B82E000ADDDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quicktype.swift; sourceTree = "<group>"; };
+		CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
+		CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionView.xib; sourceTree = "<group>"; };
+		CE3DE30623D5C101000ADDDD /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = ../Views/DateCell.swift; sourceTree = "<group>"; };
+		CE3DE30723D5C101000ADDDD /* DateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DateCell.xib; path = ../Views/DateCell.xib; sourceTree = "<group>"; };
+		CEFAAFF123D83EC900572403 /* PickerResponderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerResponderView.swift; path = ../Views/PickerResponderView.swift; sourceTree = "<group>"; };
+		CEFAAFF323D8725700572403 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		CEFAAFF923D874F700572403 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		CEFAAFFA23D874F700572403 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +74,74 @@
 		CE3DE2E923D5B82A000ADDDD /* Kudago */ = {
 			isa = PBXGroup;
 			children = (
+				CE3DE2FF23D5B975000ADDDD /* Flows */,
+				CE3DE2FC23D5B844000ADDDD /* Model */,
 				CE3DE2EA23D5B82A000ADDDD /* AppDelegate.swift */,
-				CE3DE2EC23D5B82A000ADDDD /* ViewController.swift */,
-				CE3DE2EE23D5B82A000ADDDD /* Main.storyboard */,
 				CE3DE2F123D5B82E000ADDDD /* Assets.xcassets */,
 				CE3DE2F323D5B82E000ADDDD /* LaunchScreen.storyboard */,
 				CE3DE2F623D5B82E000ADDDD /* Info.plist */,
 			);
 			path = Kudago;
+			sourceTree = "<group>";
+		};
+		CE3DE2FC23D5B844000ADDDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DE2FD23D5B85C000ADDDD /* Quicktype.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE3DE2FF23D5B975000ADDDD /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DE30023D5B97D000ADDDD /* Main */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		CE3DE30023D5B97D000ADDDD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DE30123D5BB01000ADDDD /* Views */,
+				CEFAAFF323D8725700572403 /* MainViewModel.swift */,
+				CEFAAFFD23D98B4A00572403 /* EventCellViewModel.swift */,
+				CE3DE2EE23D5B82A000ADDDD /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE3DE30123D5BB01000ADDDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DE2EC23D5B82A000ADDDD /* MainViewController.swift */,
+				CE3DE30223D5BB26000ADDDD /* DateSelectionView.swift */,
+				CE3DE30423D5BB38000ADDDD /* DateSelectionView.xib */,
+				CEFAAFF823D874A600572403 /* Helpers */,
+				CEFAAFF723D874A500572403 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CEFAAFF723D874A500572403 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DE30623D5C101000ADDDD /* DateCell.swift */,
+				CE3DE30723D5C101000ADDDD /* DateCell.xib */,
+				CEFAAFF923D874F700572403 /* EventCell.swift */,
+				CEFAAFFA23D874F700572403 /* EventCell.xib */,
+			);
+			name = Cells;
+			path = ../Cells;
+			sourceTree = "<group>";
+		};
+		CEFAAFF823D874A600572403 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEFAAFF123D83EC900572403 /* PickerResponderView.swift */,
+			);
+			name = Helpers;
+			path = ../Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,8 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3DE2F523D5B82E000ADDDD /* LaunchScreen.storyboard in Resources */,
+				CE3DE30523D5BB38000ADDDD /* DateSelectionView.xib in Resources */,
 				CE3DE2F223D5B82E000ADDDD /* Assets.xcassets in Resources */,
 				CE3DE2F023D5B82A000ADDDD /* Main.storyboard in Resources */,
+				CEFAAFFC23D874F700572403 /* EventCell.xib in Resources */,
+				CE3DE30923D5C101000ADDDD /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +218,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3DE2ED23D5B82A000ADDDD /* ViewController.swift in Sources */,
+				CEFAAFF423D8725700572403 /* MainViewModel.swift in Sources */,
+				CE3DE2ED23D5B82A000ADDDD /* MainViewController.swift in Sources */,
+				CEFAAFF223D83EC900572403 /* PickerResponderView.swift in Sources */,
+				CE3DE30823D5C101000ADDDD /* DateCell.swift in Sources */,
+				CEFAAFFE23D98B4A00572403 /* EventCellViewModel.swift in Sources */,
+				CEFAAFFB23D874F700572403 /* EventCell.swift in Sources */,
+				CE3DE30323D5BB26000ADDDD /* DateSelectionView.swift in Sources */,
 				CE3DE2EB23D5B82A000ADDDD /* AppDelegate.swift in Sources */,
+				CE3DE2FE23D5B85C000ADDDD /* Quicktype.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

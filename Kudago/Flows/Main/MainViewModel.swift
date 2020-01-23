@@ -20,8 +20,10 @@ final class MainViewModel {
             noMoreData = false
             fetchInProgress = false
             events = []
-            updateUI()
-            beginFetchEvents()
+            self.updateUI()
+            beginFetchEvents { [weak self] _,_ in
+                self?.updateUI()
+            }
         }
     }
     
@@ -45,7 +47,7 @@ final class MainViewModel {
                 "actual_until": dateString,
                 "fields": "id,title,description,images",
                 "page": "\(page)",
-                "page_size": "\(pageSize)"
+            "page_size": "\(pageSize)"
         ]
     }
     
@@ -58,10 +60,10 @@ final class MainViewModel {
     }
     private var isTaskCancelled = false
     
-    func beginFetchEvents() {
+    func beginFetchEvents(completion: @escaping (_ startIndex: Int, _ endIndex: Int) -> ()) {
         guard !fetchInProgress && !noMoreData,
             var components = URLComponents(url: type(of: self).eventsURL, resolvingAgainstBaseURL: false) else {
-            return
+                return
         }
         page += 1
         components.queryItems = eventsParameters.map { URLQueryItem(name: $0, value: $1) }
@@ -88,13 +90,19 @@ final class MainViewModel {
                     self?.noMoreData = true
                     return
                 }
-                guard !(self?.isTaskCancelled ?? true) else {
+                guard let self = self else {
                     return
                 }
-                self?.events.append(contentsOf: results.map { EventCellViewModel(model: $0) })
-                self?.updateUI()
+                guard !self.isTaskCancelled else {
+                    return
+                }
+                
+                let startIndex = self.events.count
+                let endIndex = startIndex + results.count
+                self.events.append(contentsOf: results.map { EventCellViewModel(model: $0) })
+                completion(startIndex, endIndex)
             }
-            }
+        }
         task?.resume()
     }
 }

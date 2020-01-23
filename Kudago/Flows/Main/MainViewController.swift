@@ -10,6 +10,7 @@ import UIKit
 
 final class MainViewController: UIViewController {
     private lazy var viewModel = MainViewModel(updateUI: { [weak self] in
+            self?.tableView.contentOffset.y = 0
             self?.tableView.reloadData()
         }, onErrorHappened: { [weak self] (error, info) in
             let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
@@ -34,7 +35,9 @@ final class MainViewController: UIViewController {
         }
         
         tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        viewModel.beginFetchEvents()
+        viewModel.beginFetchEvents { [weak tableView] _,_ in
+            tableView?.reloadData()
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,7 +56,7 @@ extension MainViewController: UITableViewDataSource {
             print("❗️ERROR: Cell not found")
             return UITableViewCell()
         }
-        if indexPath.row <  viewModel.events.count {
+        if indexPath.row < viewModel.events.count {
             cell.viewModel = viewModel.events[indexPath.row]
         }
         return cell
@@ -62,7 +65,11 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        viewModel.beginFetchEvents()
+        viewModel.beginFetchEvents { [weak tableView] startIndex, endIndex in
+            let foo = (startIndex ..< endIndex)
+            let indexPaths = (startIndex ..< endIndex).map { return IndexPath(row: $0, section: 0) }
+            tableView?.insertRows(at: indexPaths, with: .none)
+        }
     }
 }
 

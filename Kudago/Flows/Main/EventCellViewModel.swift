@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class EventCellViewModel {
+final class EventCellViewModel: Equatable {
     private let model: Result
     
     init(model: Result) {
@@ -25,5 +25,9 @@ final class EventCellViewModel {
     
     var descriptionText: String {
         return model.resultDescription ?? ""
+    }
+    
+    static func == (lhs: EventCellViewModel, rhs: EventCellViewModel) -> Bool {
+        return lhs.model.id == rhs.model.id
     }
 }

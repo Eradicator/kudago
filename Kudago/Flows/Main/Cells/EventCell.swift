@@ -18,8 +18,12 @@ final class EventCell: UITableViewCell {
             guard let viewModel = viewModel else {
                 return
             }
-            if let location = viewModel.imageLocation {
-                setImage(location)
+            if let oldValue = oldValue, viewModel == oldValue {
+                return
+            }
+            
+            if let imageLocation = viewModel.imageLocation {
+                setImage(imageLocation)
             }
             titleLabel.text = viewModel.title
             

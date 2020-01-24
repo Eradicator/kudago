@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIImageView {
-    func setImage(with location: String) {
+    func setImage(with location: String) -> URLSessionTask? {
         guard let url = URL(string: location) else {
-            return
+            return nil
         }
         let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-        URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
             guard error == nil,
                 let data = data,
                 let image = UIImage(data: data) else {
@@ -23,6 +23,8 @@ extension UIImageView {
             DispatchQueue.main.async {
                 self?.image = image
             }
-        }.resume()
+        }
+        task.resume()
+        return task
     }
 }

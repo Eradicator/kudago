@@ -13,10 +13,14 @@ final class ImageCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        cancellationToken?.cancel()
         imageView.image = nil
     }
 
+    private weak var cancellationToken: URLSessionTask?
+    
     func setImage(with location: String) {
-        imageView.setImage(with: location)
+        cancellationToken = imageView.setImage(with: location)
     }
 }

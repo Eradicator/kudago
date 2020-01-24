@@ -12,6 +12,7 @@ final class EventCell: UITableViewCell {
     @IBOutlet private weak var theImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    private weak var cancellationToken: URLSessionTask?
     
     weak var viewModel: EventCellViewModel? {
         didSet {
@@ -23,7 +24,7 @@ final class EventCell: UITableViewCell {
             }
             
             if let imageLocation = viewModel.imageLocation {
-                theImageView.setImage(with: imageLocation)
+                cancellationToken = theImageView.setImage(with: imageLocation)
             }
             titleLabel.text = viewModel.title
             
@@ -34,9 +35,11 @@ final class EventCell: UITableViewCell {
             }
         }
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        cancellationToken?.cancel()
         theImageView.image = nil
         titleLabel.text = ""
         descriptionLabel.text = ""

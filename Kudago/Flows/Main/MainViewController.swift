@@ -119,9 +119,15 @@ extension MainViewController: UITableViewDataSourcePrefetching {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if activityIndicatorView.isAnimating {
+            return
+        }
+        setLoading(true)
         viewModel.events[indexPath.row].createDetailViewModel(success: {[weak self] (detailViewModel) in
+            self?.setLoading(false)
             self?.performSegue(withIdentifier: "ShowDetailEvent", sender: detailViewModel)
             }, failure: { [weak self] error, info in
+                self?.setLoading(false)
                 self?.errorHappened(error: error, info: info)
         })
     }

@@ -76,6 +76,9 @@ final class DateSelectionView: UIView {
     
     private var selectedDate = Date() {
         didSet {
+            guard oldValue != selectedDate else {
+                return
+            }
             onSelectedDateChanged?(selectedDate)
         }
     }

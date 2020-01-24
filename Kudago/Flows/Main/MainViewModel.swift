@@ -10,7 +10,6 @@ import Foundation
 
 final class MainViewModel {
     private let updateUI: () -> ()
-    private let onErrorHappened: (_ error: Error?, _ info: String) -> ()
     
     var date = Date() {
         didSet {
@@ -21,9 +20,6 @@ final class MainViewModel {
             fetchInProgress = false
             events = []
             self.updateUI()
-            beginFetchEvents { [weak self] _,_ in
-                self?.updateUI()
-            }
         }
     }
     
@@ -34,9 +30,8 @@ final class MainViewModel {
     
     private static let eventsURL = URL(string: "https://kudago.com/public-api/v1.4/events/")!
     
-    init(updateUI: @escaping () -> (), onErrorHappened: @escaping (_ error: Error?, _ info: String) -> ()) {
+    init(updateUI: @escaping () -> ()) {
         self.updateUI = updateUI
-        self.onErrorHappened = onErrorHappened
     }
     
     private var eventsParameters: [String: String] {
@@ -52,6 +47,7 @@ final class MainViewModel {
     }
     
     private var fetchInProgress = false
+    
     private var noMoreData = false
     private var task: URLSessionTask? {
         didSet {
@@ -60,14 +56,17 @@ final class MainViewModel {
     }
     private var isTaskCancelled = false
     
-    func beginFetchEvents(completion: @escaping (_ startIndex: Int, _ endIndex: Int) -> ()) {
+    func beginFetchEvents(success: @escaping (_ startIndex: Int, _ endIndex: Int) -> (),
+                          failure: @escaping (_ error: Error?, _ info: String?) -> ()) {
         guard !fetchInProgress && !noMoreData,
             var components = URLComponents(url: type(of: self).eventsURL, resolvingAgainstBaseURL: false) else {
+                failure(nil, nil)
                 return
         }
         page += 1
         components.queryItems = eventsParameters.map { URLQueryItem(name: $0, value: $1) }
         guard let url = components.url else {
+            failure(nil, nil)
             return
         }
         
@@ -77,30 +76,34 @@ final class MainViewModel {
                 self?.fetchInProgress = false
             }
             guard let events = events else {
+                failure(nil, nil)
                 return
             }
             guard error == nil else {
                 DispatchQueue.main.async {
-                    self?.onErrorHappened(error, "Fetching failed, check network connection")
+                    failure(error, "Fetching failed, check network connection")
                 }
                 return
             }
             DispatchQueue.main.async {
                 guard let results = events.results else {
                     self?.noMoreData = true
+                    failure(nil, nil)
                     return
                 }
                 guard let self = self else {
+                    failure(nil, nil)
                     return
                 }
                 guard !self.isTaskCancelled else {
+                    failure(nil, nil)
                     return
                 }
                 
                 let startIndex = self.events.count
                 let endIndex = startIndex + results.count
                 self.events.append(contentsOf: results.map { EventCellViewModel(model: $0) })
-                completion(startIndex, endIndex)
+                success(startIndex, endIndex)
             }
         }
         task?.resume()

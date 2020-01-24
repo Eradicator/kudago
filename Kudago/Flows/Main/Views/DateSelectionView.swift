@@ -11,7 +11,7 @@ import UIKit
 final class DateSelectionView: UIView {
     var onSelectedDateChanged: ((Date) -> ())?
     
-    private static let pagesCount = 1000
+    private static let pagesCount = 10000
     private static let defaultPage: Int = pagesCount / 2
     
     private var cellWidth: CGFloat = 0

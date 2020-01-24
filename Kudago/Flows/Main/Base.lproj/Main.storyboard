@@ -34,6 +34,9 @@
                                     <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="Ket-Ze-rEc"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3bf-U1-Kg0">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -41,7 +44,9 @@
                             <constraint firstItem="JL8-Zb-FQ8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HMi-Be-piD"/>
                             <constraint firstItem="axT-HK-SwY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MZd-4b-x4g"/>
                             <constraint firstItem="JL8-Zb-FQ8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RwF-6y-zCE"/>
+                            <constraint firstItem="3bf-U1-Kg0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W5l-Ps-cMu"/>
                             <constraint firstItem="JL8-Zb-FQ8" firstAttribute="top" secondItem="axT-HK-SwY" secondAttribute="bottom" id="bnT-Fi-9WT"/>
+                            <constraint firstItem="3bf-U1-Kg0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lbM-H6-mvp"/>
                             <constraint firstItem="axT-HK-SwY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mcf-cD-BfQ"/>
                             <constraint firstItem="JL8-Zb-FQ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rer-Vc-8qO"/>
                         </constraints>
@@ -49,6 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EUU-FW-nGe"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="3bf-U1-Kg0" id="2jo-M7-oRI"/>
                         <outlet property="dateSelectionContainerView" destination="axT-HK-SwY" id="u1G-zU-ALn"/>
                         <outlet property="tableView" destination="JL8-Zb-FQ8" id="jBE-EA-VPp"/>
                         <segue destination="iRg-rJ-1Uq" kind="show" identifier="ShowDetailEvent" id="v54-I7-96L"/>

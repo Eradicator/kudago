@@ -9,14 +9,27 @@
 import UIKit
 
 final class MainViewController: UIViewController {
-    private lazy var viewModel = MainViewModel(updateUI: { [weak self] in
+    private lazy var viewModel: MainViewModel = {
+        let viewModel = MainViewModel(updateUI: { [weak self] in
             self?.tableView.contentOffset.y = 0
             self?.tableView.reloadData()
-        }, onErrorHappened: { [weak self] (error, info) in
-            self?.errorHappened(error: error, info: info)
-    })
+        })
+        return viewModel
+    }()
     
-    private func errorHappened(error: Error?, info: String) {
+    private func setLoading(_ loading: Bool) {
+        if loading {
+            activityIndicatorView.startAnimating()
+        }
+        else {
+            activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    private func errorHappened(error: Error?, info: String?) {
+        guard let info = info else {
+            return
+        }
         let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
@@ -25,6 +38,7 @@ final class MainViewController: UIViewController {
     
     @IBOutlet private weak var dateSelectionContainerView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     private weak var dateSelectionView: UIView?
     
     override func viewDidLoad() {
@@ -33,15 +47,33 @@ final class MainViewController: UIViewController {
         if let dateSelectionView = UINib(nibName: "DateSelectionView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? DateSelectionView {
             dateSelectionContainerView.addSubview(dateSelectionView)
             self.dateSelectionView = dateSelectionView
-            dateSelectionView.onSelectedDateChanged = { [weak viewModel] date in
-                viewModel?.date = date
+            
+            dateSelectionView.onSelectedDateChanged = { [weak self] date in
+                guard let self = self else {
+                    return
+                }
+                self.viewModel.date = date
+                self.setLoading(true)
+                self.viewModel.beginFetchEvents(success: { [weak self] (_, _) in
+                    self?.tableView.reloadData()
+                    self?.setLoading(false)
+                    }, failure: { [weak self] (error, info) in
+                        self?.errorHappened(error: error, info: info)
+                        self?.setLoading(false)
+                })
             }
         }
         
         tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        viewModel.beginFetchEvents { [weak tableView] _,_ in
-            tableView?.reloadData()
-        }
+        
+        self.setLoading(true)
+        self.viewModel.beginFetchEvents(success: { [weak self] (_, _) in
+            self?.tableView.reloadData()
+            self?.setLoading(false)
+            }, failure: { [weak self] (error, info) in
+                self?.errorHappened(error: error, info: info)
+                self?.setLoading(false)
+        })
     }
     
     override func viewWillLayoutSubviews() {
@@ -76,10 +108,12 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        viewModel.beginFetchEvents { [weak tableView] startIndex, endIndex in
+        viewModel.beginFetchEvents(success: { [weak tableView] startIndex, endIndex in
             let indexPaths = (startIndex ..< endIndex).map { return IndexPath(row: $0, section: 0) }
             tableView?.insertRows(at: indexPaths, with: .none)
-        }
+            }, failure: { [weak self] error, info in
+                self?.errorHappened(error: error, info: info)
+        })
     }
 }
 
@@ -87,8 +121,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.events[indexPath.row].createDetailViewModel(success: {[weak self] (detailViewModel) in
             self?.performSegue(withIdentifier: "ShowDetailEvent", sender: detailViewModel)
-    }, failure: { [weak self] error, info in
-        self?.errorHappened(error: error, info: info)
-    })
+            }, failure: { [weak self] error, info in
+                self?.errorHappened(error: error, info: info)
+        })
     }
 }
